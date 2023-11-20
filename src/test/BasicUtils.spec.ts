@@ -1,4 +1,4 @@
-import { product } from "../app/BasicUtils"
+import { authenticateUser, product } from "../app/BasicUtils"
 
 describe('BasicUtils Test Suite', () => {
     it('Should return the product of 3 and 2', () => {
@@ -15,4 +15,57 @@ describe('BasicUtils Test Suite', () => {
         expect(actual).toBe(expected)
         
     })
+
+
+    describe.only('Authentication Test Suite', () => {
+        it('Should test username', () => {
+            //Arrange
+            const testAuth = authenticateUser
+            const userNameInput = 'DEVELOPER'
+            const pwdInput      = 'test'
+            const userNameExpected = 'developer'
+            let userNameActual
+            
+            //Act
+            userNameActual = testAuth(userNameInput, pwdInput).userNameLowerCase
+            
+            //Assert
+            expect(userNameActual).toBe(userNameExpected)
+        })
+    
+        it('Should test array of username characters', () => {
+            //Arrange
+            const testAuth = authenticateUser
+            const userNameInput = 'DEVELOPER'
+            const pwdInput      = 'test'
+            let charArrayActual
+            //test array of characters
+            const charArrayInput = ['D', 'E', 'V', 'E', 'L', 'O', 'P', 'E', 'R']
+    
+            //Act
+            charArrayActual = testAuth(userNameInput, pwdInput).userNameCharacters
+    
+            //Assert
+            expect(charArrayActual).toEqual(charArrayInput)
+        })
+
+        it('Should contain a correct letter', () => {
+            //Arrange
+            const testAuth = authenticateUser
+            const userNameInput  = 'DEVELOPER'
+            const userNameLetter = 'D'
+            const pwdInput       = 'test'
+
+            let charArrayActual
+    
+            //Act
+            charArrayActual = testAuth(userNameInput, pwdInput).userNameCharacters
+    
+            //Assert
+            expect(charArrayActual).toContain(userNameLetter)
+        })
+
+    })
 })
+
+
