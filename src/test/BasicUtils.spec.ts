@@ -65,6 +65,37 @@ describe('BasicUtils Test Suite', () => {
             expect(charArrayActual).toContain(userNameLetter)
         })
 
+        it('Should test array of username characters - Whatever the sort of letters', () => {
+            //Arrange
+            const testAuth = authenticateUser
+            const userNameInput = 'DEVELOPER'
+            const pwdInput      = 'test'
+            let charArrayActual
+            //test array of characters
+            const charArrayInput = ['L', 'O', 'P', 'E', 'R', 'D', 'E', 'V', 'E']
+    
+            //Act
+            charArrayActual = testAuth(userNameInput, pwdInput).userNameCharacters
+    
+            //Assert
+            expect(charArrayActual).toEqual(
+                expect.arrayContaining(charArrayInput)
+            )
+        })
+
+        it('Should test returned user is a valid user', () => {
+            //Arrange
+            const testAuth = authenticateUser
+            const userNameInput = 'DEVELOPER'
+            const pwdInput      = 'test'
+            let userActual
+
+            //Act
+            userActual = testAuth(userNameInput, pwdInput)
+    
+            //Assert
+            expect(userActual).not.toBeUndefined()
+        })
     })
 })
 
