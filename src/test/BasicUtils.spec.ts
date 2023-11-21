@@ -96,6 +96,22 @@ describe('BasicUtils Test Suite', () => {
             //Assert
             expect(userActual).not.toBeUndefined()
         })
+
+        it('Should return a correct bool if user is authenticated', () => {
+            //Arrange
+            const testAuth = authenticateUser
+            const userNameInput = 'DEVELOPER'
+            const pwdInput      = 'test'
+            let userActual
+
+            //Act
+            userActual = testAuth(userNameInput, pwdInput)
+
+    
+            //Assert
+            expect(userActual.isAuthenticated).toBeTruthy()
+        })
+
     })
 })
 

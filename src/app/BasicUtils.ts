@@ -5,7 +5,7 @@ export function product(a: number, b: number):number {
 }
 
 export function authenticateUser(userName: string, password: string):IAuthenticationData {
-    const authenticationStatus = userName === 'deveLOPER' && password === 'dev'
+    const authenticationStatus = userName === 'DEVELOPER' && password === 'test'
 
     let user: IAuthenticationData
     user = {
