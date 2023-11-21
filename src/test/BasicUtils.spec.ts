@@ -16,67 +16,49 @@ describe('BasicUtils Test Suite', () => {
         
     })
 
-
     describe.only('Authentication Test Suite', () => {
+
+        let userNameInput: string
+        let pwdInput: string
+        let testAuth: any
+        beforeEach(() => {
+            userNameInput = 'DEVELOPER'
+            pwdInput      = 'test'
+            testAuth = authenticateUser
+        })
+
         it('Should test username', () => {
             //Arrange
-            const testAuth = authenticateUser
-            const userNameInput = 'DEVELOPER'
-            const pwdInput      = 'test'
             const userNameExpected = 'developer'
-            let userNameActual
-            
             //Act
-            userNameActual = testAuth(userNameInput, pwdInput).userNameLowerCase
-            
+            const userNameActual = testAuth(userNameInput, pwdInput).userNameLowerCase
             //Assert
             expect(userNameActual).toBe(userNameExpected)
         })
     
         it('Should test array of username characters', () => {
-            //Arrange
-            const testAuth = authenticateUser
-            const userNameInput = 'DEVELOPER'
-            const pwdInput      = 'test'
-            let charArrayActual
-            //test array of characters
+            //Arrange : test array of characters
             const charArrayInput = ['D', 'E', 'V', 'E', 'L', 'O', 'P', 'E', 'R']
-    
             //Act
-            charArrayActual = testAuth(userNameInput, pwdInput).userNameCharacters
-    
+            const charArrayActual = testAuth(userNameInput, pwdInput).userNameCharacters
             //Assert
             expect(charArrayActual).toEqual(charArrayInput)
         })
 
         it('Should contain a correct letter', () => {
             //Arrange
-            const testAuth = authenticateUser
-            const userNameInput  = 'DEVELOPER'
             const userNameLetter = 'D'
-            const pwdInput       = 'test'
-
-            let charArrayActual
-    
             //Act
-            charArrayActual = testAuth(userNameInput, pwdInput).userNameCharacters
-    
+            const charArrayActual = testAuth(userNameInput, pwdInput).userNameCharacters    
             //Assert
             expect(charArrayActual).toContain(userNameLetter)
         })
 
         it('Should test array of username characters - Whatever the sort of letters', () => {
-            //Arrange
-            const testAuth = authenticateUser
-            const userNameInput = 'DEVELOPER'
-            const pwdInput      = 'test'
-            let charArrayActual
-            //test array of characters
+            //Arrange : test array of characters
             const charArrayInput = ['L', 'O', 'P', 'E', 'R', 'D', 'E', 'V', 'E']
-    
             //Act
-            charArrayActual = testAuth(userNameInput, pwdInput).userNameCharacters
-    
+            const charArrayActual = testAuth(userNameInput, pwdInput).userNameCharacters
             //Assert
             expect(charArrayActual).toEqual(
                 expect.arrayContaining(charArrayInput)
@@ -85,32 +67,32 @@ describe('BasicUtils Test Suite', () => {
 
         it('Should test returned user is a valid user', () => {
             //Arrange
-            const testAuth = authenticateUser
-            const userNameInput = 'DEVELOPER'
-            const pwdInput      = 'test'
-            let userActual
-
+            
             //Act
-            userActual = testAuth(userNameInput, pwdInput)
-    
+            const userActual = testAuth(userNameInput, pwdInput)
             //Assert
             expect(userActual).not.toBeUndefined()
         })
 
         it('Should return a correct bool if user is authenticated', () => {
             //Arrange
-            const testAuth = authenticateUser
-            const userNameInput = 'DEVELOPER'
-            const pwdInput      = 'test'
-            let userActual
 
             //Act
-            userActual = testAuth(userNameInput, pwdInput)
-
-    
+            const userActual = testAuth(userNameInput, pwdInput)
             //Assert
             expect(userActual.isAuthenticated).toBeTruthy()
         })
+
+        it('Should throw an error if userName or password is incorrect', () => {
+            //Arrange
+            pwdInput = 'test2'
+            //Act
+            const userActual = () => testAuth(userNameInput, pwdInput)
+            //Assert
+            expect(userActual).toThrow('Invalid userName or password')
+        })
+
+        it.todo('Should test feature Z')
 
     })
 })

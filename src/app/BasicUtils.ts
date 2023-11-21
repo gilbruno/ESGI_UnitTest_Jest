@@ -7,6 +7,9 @@ export function product(a: number, b: number):number {
 export function authenticateUser(userName: string, password: string):IAuthenticationData {
     const authenticationStatus = userName === 'DEVELOPER' && password === 'test'
 
+    if (!authenticationStatus) {
+        throw new Error('Invalid userName or password')
+    }
     let user: IAuthenticationData
     user = {
         userNameLowerCase: userName.toLowerCase(),
@@ -18,3 +21,5 @@ export function authenticateUser(userName: string, password: string):IAuthentica
     return user
 
 }
+
+
