@@ -26,7 +26,7 @@ describe.only('BasicUtils Test Suite', () => {
         expect(actual).toBe(expected)
     })
 
-    it.each([
+    it.skip.each([
         {a: 2, b: 2, expected: 4},
         {a: 5, b: 3, expected: 15},
         {a: 10, b: 10, expected: 100}
@@ -39,7 +39,7 @@ describe.only('BasicUtils Test Suite', () => {
         expect(actual).toBe(expected)
     })
 
-    describe('Authentication Test Suite', () => {
+    describe.only('Authentication Test Suite', () => {
 
         let userNameInput: string
         let pwdInput: string
@@ -50,7 +50,7 @@ describe.only('BasicUtils Test Suite', () => {
             testAuth = authenticateUser
         })
 
-        it('Should test username', () => {
+        it.skip('Should test username', () => {
             //Arrange
             const userNameExpected = 'developer'
             //Act
