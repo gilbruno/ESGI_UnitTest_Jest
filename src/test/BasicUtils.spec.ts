@@ -17,7 +17,7 @@ describe.only('BasicUtils Test Suite', () => {
         [2, 2, 4],
         [5, 3, 15],
         [10, 10, 100]
-    ])('Should return the product of %i  and %j', (a, b, expected) => {
+    ])('Should return the product of %i  and %j by using array', (a, b, expected) => {
         //Arrange
         const testProduct = product
         //Act
@@ -30,7 +30,7 @@ describe.only('BasicUtils Test Suite', () => {
         {a: 2, b: 2, expected: 4},
         {a: 5, b: 3, expected: 15},
         {a: 10, b: 10, expected: 100}
-    ])('Should return the product of $a and $b', ({a, b, expected}) => {
+    ])('Should return the product of $a and $b by using object', ({a, b, expected}) => {
         //Arrange
         const testProduct = product
         //Act
