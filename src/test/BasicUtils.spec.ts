@@ -1,22 +1,45 @@
 import { authenticateUser, product } from "../app/BasicUtils"
 
-describe('BasicUtils Test Suite', () => {
-    it('Should return the product of 3 and 2', () => {
+describe.only('BasicUtils Test Suite', () => {
+    it.skip('Should return the product of 3 and 2', () => {
         //Arrange
         const input1 = 3
         const input2 = 2
         const expected = 6
         const testProduct = product
-
         //Act
         const actual = testProduct(input1, input2)
-
         //Assert
         expect(actual).toBe(expected)
-        
     })
 
-    describe.only('Authentication Test Suite', () => {
+    it.skip.each([
+        [2, 2, 4],
+        [5, 3, 15],
+        [10, 10, 100]
+    ])('Should return the product of %i  and %j', (a, b, expected) => {
+        //Arrange
+        const testProduct = product
+        //Act
+        const actual = testProduct(a, b)
+        //Assert
+        expect(actual).toBe(expected)
+    })
+
+    it.each([
+        {a: 2, b: 2, expected: 4},
+        {a: 5, b: 3, expected: 15},
+        {a: 10, b: 10, expected: 100}
+    ])('Should return the product of $a and $b', ({a, b, expected}) => {
+        //Arrange
+        const testProduct = product
+        //Act
+        const actual = testProduct(a, b)
+        //Assert
+        expect(actual).toBe(expected)
+    })
+
+    describe('Authentication Test Suite', () => {
 
         let userNameInput: string
         let pwdInput: string
