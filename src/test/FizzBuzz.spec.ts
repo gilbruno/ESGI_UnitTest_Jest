@@ -38,6 +38,16 @@ describe("FizzBuzz Test", () => {
         expect(generatedNumber).toEqual('Buzz')
     })
 
+    it("should return 'FizzBuzz' if 15 is passed", () => {
+        const generatedNumber = fizzBuzz.generate(15)
+        expect(generatedNumber).toEqual('FizzBuzz')
+    })
+
+    it("should return 'FizzBuzz' if 30 is passed", () => {
+        const generatedNumber = fizzBuzz.generate(30)
+        expect(generatedNumber).toEqual('FizzBuzz')
+    })
+
 })
 
 
