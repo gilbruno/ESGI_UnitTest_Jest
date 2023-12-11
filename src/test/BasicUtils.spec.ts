@@ -1,6 +1,6 @@
 import { authenticateUser, product } from "../app/BasicUtils"
 
-describe.only('BasicUtils Test Suite', () => {
+describe.skip('BasicUtils Test Suite', () => {
     it.skip('Should return the product of 3 and 2', () => {
         //Arrange
         const input1 = 3

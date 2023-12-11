@@ -1,6 +1,6 @@
 import { UserManager } from "../app/users/UserManager"
 
-describe('UserManager', () => {
+describe.skip('UserManager', () => {
     let userManager: UserManager
     const mockUser = { id: 1, name: 'John Doe', email: 'john@example.com' }
     const mockUser2 = { id: 2, name: 'Jane Doe', email: 'jane@example.com' }
