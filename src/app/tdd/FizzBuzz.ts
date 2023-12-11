@@ -2,10 +2,9 @@
 export class FizzBuzz {
 
     generate(number: number) {
-        if (number === 1)
-            return 1
-        return 2
+        if (number === 3) 
+            return 'Fizz'
+        return number.toString()
     }
-
 }
 
