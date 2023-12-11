@@ -28,6 +28,11 @@ describe("FizzBuzz Test", () => {
         expect(generatedNumber).toEqual('Fizz')
     })
 
+    it("should return 'Buzz' if 5 is passed", () => {
+        const generatedNumber = fizzBuzz.generate(5)
+        expect(generatedNumber).toEqual('Buzz')
+    })
+
 })
 
 
