@@ -53,6 +53,11 @@ describe("FizzBuzz Test", () => {
         expect(generatedString).toEqual('12')
     })
 
+    it("should return '12Fizz' if our interval is from 1 to 3", () => {
+        const generatedString = fizzBuzz.generate(1, 3)
+        expect(generatedString).toEqual('12Fizz')
+    })
+
 })
 
 
